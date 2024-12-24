@@ -1,6 +1,10 @@
+const {createUser} = require('../service/user.service');
+
 class userController {
     async register(ctx, next) {
-        ctx.body = '123123';
+        const {user_name, password} = ctx.request.body;
+        const res = await createUser(user_name, password);
+        ctx.body = res;
     };
 
     async login(ctx, next) {
